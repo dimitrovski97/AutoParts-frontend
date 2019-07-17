@@ -1,8 +1,25 @@
 import React from 'react'
 import AutoPart from "../AutoPart/AutoPart";
+import {BabelFileResult as data} from "@babel/core";
+import noimage from "../Images/noimage.jpg";
+
+
 
 export default class AutoPartList extends React.Component{
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            data: null,
+        };
+    }
+    componentDidMount() {
+        fetch(window.location.href)
+            .then(response => response.json())
+            .then(data => this.setState({ data }));
+    }
     render(){
+        const { data } = this.state;
         return(
             <div class="row container">
                 <div class="col-sm-2  rounded m-2 ">
@@ -26,9 +43,38 @@ export default class AutoPartList extends React.Component{
                     </form>
                 </div>
                 <div class="col-sm-9 justify-content-center">
-                    <AutoPart/>
-                    <AutoPart/>
-                    <AutoPart/>
+
+                    {/*{data.map(hit =>
+                        <AutoPart id={hit.id} name={hit.name} price={hit.price} manu={hit.manufacturer} cat={hit.category} qua={hit.inStockNumber}/>
+                    )}*/}
+                    <div className="row border border-success rounded-pill m-2">
+                        <div className="col-sm-3">
+                            <img src={noimage} className="rounded-circle w-100 m-2"/>
+                        </div>
+                    <div className="col-sm-7 align-items-center justify-content-center">
+                        <h4><a className='nav-link' href={'autopart/' + this.props.id}>Име на автодел</a></h4>
+                        <p>Количина: 4</p>
+                        <p>Категорија: Мотор</p>
+                        <p>Производител: Audi</p>
+                        <button className="btn btn-outline-primary ml-auto float-right mb-2">Додај во <span
+                            className="fa fa-shopping-cart"></span></button>
+                    </div>
+
+                    </div>
+                    <div className="row border border-success rounded-pill m-2">
+                        <div className="col-sm-3">
+                            <img src={noimage} className="rounded-circle w-100 m-2"/>
+                        </div>
+                        <div className="col-sm-7 align-items-center justify-content-center">
+                            <h4><a className='nav-link' href={'autopart/' + this.props.id}>Име на автодел</a></h4>
+                            <p>Количина: 4</p>
+                            <p>Категорија: Мотор</p>
+                            <p>Производител: Audi</p>
+                            <button className="btn btn-outline-primary ml-auto float-right mb-2">Додај во <span
+                                className="fa fa-shopping-cart"></span></button>
+                        </div>
+
+                    </div>
                     <ul className="pagination ml-5">
                         <li className="page-item"><a className="page-link" href="#">Previous</a></li>
                         <li className="page-item"><a className="page-link" href="#">1</a></li>
