@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.nav-item:hover{
+  color: white;
+}
+#sidebar{
+  min-height: 55vh;
+}

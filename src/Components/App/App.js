@@ -12,6 +12,8 @@ import AutoPartList from "../AutoPartList/AutoPartList";
 import Popular from "../Popular/Popular";
 import Service1 from "../Services/service1";
 import Service2 from "../Services/service2";
+import Admin from "../AdminPanel/Admin";
+import AddNewPart from "../AdminPanel/AddNewPart";
 
 
 class App extends React.Component{
@@ -24,12 +26,13 @@ class App extends React.Component{
             <Router>
                 <Route exact path="/" component={Slider}/>
                 <div class="m-auto container row justify-content-center ">
-                    <Route exact  path="/" component={SearchInput}/>
-                    <Route exact path="/" component={SearchInput}/>
-                    <Route exact path="/" component={SearchInput}/>
+                    <Route exact  path="/" component={() => <SearchInput name="Пребарувај по број на дел"/>}/>
+                    <Route exact  path="/" component={() => <SearchInput name="Пребарувај по производител"/>}/>
+                    <Route exact  path="/" component={() => <SearchInput name="Пребарувај по категорија"/>}/>
                     <Route exact path="/" component={Popular}/>
                     <Route path="/login" exact component={Login}/>
                     <Route path="/autoparts" exact component={AutoPartList}/>
+                    <Route path="/admin" component={Admin}/>
                     <Route exact path="/service1" exact component={Service1}/>
                     <Route exact path="/service2" exact component={Service2}/>
 
